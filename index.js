@@ -1,9 +1,13 @@
 const PORT = process.env.PORT || 3000;
 const INDEX = '/index.html';
 
+const cors = require('cors');
+
 const server = express()
   .use((req, res) => res.sendFile(INDEX, { root: __dirname }))
   .listen(PORT, () => console.log(`Listening on ${PORT}`));
+
+  server.use(cors());
 
   const io = socketIO(server);
 
